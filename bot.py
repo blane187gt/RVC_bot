@@ -71,8 +71,10 @@ def handle_audio(update: Update, context: CallbackContext) -> None:
     
     # Send back the converted file
     update.message.reply_audio(audio=open(result_path, 'rb'))
-    os.remove(file_path)  # Cleanup the downloaded file
-    os.remove(result_path)  # Cleanup the converted file
+    
+    # Cleanup
+    os.remove(file_path)  # Remove the original uploaded file
+    os.remove(result_path)  # Remove the converted file
 
 def main() -> None:
     # Create the Updater and pass it your bot's token.
